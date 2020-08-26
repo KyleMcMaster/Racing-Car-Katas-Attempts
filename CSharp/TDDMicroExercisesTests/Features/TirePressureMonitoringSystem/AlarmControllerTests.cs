@@ -17,17 +17,5 @@ namespace TDDMicroExercisesTests.Features.TirePressureMonitoringSystem
         {
             client = factory.CreateClient();
         }
-
-        [Fact]
-        public async Task ReturnsNonNullResponse()
-        {
-            var response = await client.GetAsync("/alarm");
-            response.EnsureSuccessStatusCode();
-
-            string stringResponse = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<AlarmResponse>(stringResponse);
-
-            result.Should().NotBeNull();
-        }
     }
 }
