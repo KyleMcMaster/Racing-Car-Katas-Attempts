@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace TDDMicroExercises.Features.TirePressureMonitoringSystem
 {
@@ -12,6 +13,12 @@ namespace TDDMicroExercises.Features.TirePressureMonitoringSystem
         public AlarmController(ILogger<AlarmController> logger) => this.logger = logger;
 
         [HttpGet()]
+        [SwaggerOperation(
+            Summary = "Gets an alarm's state",
+            Description = "Check an alarm and return whether the sensor for that alarm triggered the alarm itself",
+            OperationId = "Alarm.Get",
+            Tags = new[] { "Alarm" })
+        ]
         public AlarmResponse Get()
         {
             var alarm = new Alarm();
