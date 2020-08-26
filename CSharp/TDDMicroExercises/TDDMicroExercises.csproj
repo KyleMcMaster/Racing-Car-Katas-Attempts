@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Features\TirePressureMonitoringSystem\NewFile.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.4.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
   </ItemGroup>

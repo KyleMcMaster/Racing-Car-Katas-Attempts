@@ -9,8 +9,13 @@ namespace TDDMicroExercises.Features.TirePressureMonitoringSystem
     public class AlarmController : ControllerBase
     {
         private readonly ILogger<AlarmController> logger;
+        private readonly ISensor sensor;
 
-        public AlarmController(ILogger<AlarmController> logger) => this.logger = logger;
+        public AlarmController(ILogger<AlarmController> logger, ISensor sensor)
+        {
+            this.logger = logger;
+            this.sensor = sensor;
+        }
 
         [HttpGet()]
         [SwaggerOperation(
@@ -21,7 +26,7 @@ namespace TDDMicroExercises.Features.TirePressureMonitoringSystem
         ]
         public AlarmResponse Get()
         {
-            var alarm = new Alarm();
+            var alarm = new Alarm(sensor);
 
             alarm.Check();
 

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using TDDMicroExercises.Features.TirePressureMonitoringSystem;
 
 namespace TDDMicroExercises
 {
@@ -26,6 +27,9 @@ namespace TDDMicroExercises
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TDDMicroExercises", Version = "v1" });
                 c.EnableAnnotations();
             });
+
+            services.AddScoped<ISensor, Sensor>();
+            services.AddScoped<IRandomNumberGenerator, RandomNumberGenerator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
