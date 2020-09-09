@@ -12,9 +12,9 @@ namespace TDDMicroExercisesTests.Infrastructure
     {
         private readonly IRandomNumberGenerator randomNumberGenerator;
 
-        public CustomWebApplicationFactory(IRandomNumberGenerator randomNumberGenerator)
+        public CustomWebApplicationFactory(IRandomNumberGenerator randomNumberGenerator = null)
         {
-            this.randomNumberGenerator = randomNumberGenerator;
+            this.randomNumberGenerator = randomNumberGenerator ?? new RandomNumberGenerator();
         }
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)

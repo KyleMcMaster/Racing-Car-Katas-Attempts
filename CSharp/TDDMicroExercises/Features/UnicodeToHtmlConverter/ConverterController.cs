@@ -25,12 +25,12 @@ namespace TDDMicroExercises.Features.UnicodeTextToHtmlTextConverter
 
             return new HtmlTextResponse
             {
-                HtmlText = converter.GetUnicodeText()
+                HtmlText = converter.ConvertToHtml()
             };
         }
     }
 
-    public class UnicodeTextToHtmlTextRequest 
+    public class UnicodeTextToHtmlTextRequest
     {
         public string UnicodeText { get; set; }
     }

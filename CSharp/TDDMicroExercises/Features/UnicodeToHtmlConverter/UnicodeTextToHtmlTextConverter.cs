@@ -22,7 +22,7 @@ namespace TDDMicroExercises.Features.UnicodeTextToHtmlTextConverter
 
             html = HttpUtility.HtmlEncode(_unicodeText);
             html += "<br />";
-            
+
             return html;
         }
     }
@@ -30,11 +30,11 @@ namespace TDDMicroExercises.Features.UnicodeTextToHtmlTextConverter
     {
         public static string HtmlEncode(string line)
         {
+            line = line.Replace("&", "&amp;");
             line = line.Replace("<", "&lt;");
             line = line.Replace(">", "&gt;");
-            line = line.Replace("&", "&amp;");
             line = line.Replace("\"", "&quot;");
-            line = line.Replace("\'", "&quot;");
+            line = line.Replace("\'", "&apos;");
             return line;
         }
     }
