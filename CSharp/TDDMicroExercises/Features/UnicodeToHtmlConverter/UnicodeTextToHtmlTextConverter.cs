@@ -1,31 +1,18 @@
-
-
 namespace TDDMicroExercises.Features.UnicodeTextToHtmlTextConverter
 {
-    public class UnicodeTextToHtmlTextConverter
+    public class UnicodeTextToHtmlTextConverter : IUnicodeTextToHtmlTextConverter
     {
-        private string _unicodeText;
-
-        public UnicodeTextToHtmlTextConverter(string unicodeText)
-        {
-            _unicodeText = unicodeText;
-        }
-
-        public string GetUnicodeText()
-        {
-            return _unicodeText;
-        }
-
-        public string ConvertToHtml()
+        public string ConvertToHtml(string unicodeText)
         {
             string html = string.Empty;
 
-            html = HttpUtility.HtmlEncode(_unicodeText);
+            html = HttpUtility.HtmlEncode(unicodeText);
             html += "<br />";
 
             return html;
         }
     }
+
     class HttpUtility
     {
         public static string HtmlEncode(string line)

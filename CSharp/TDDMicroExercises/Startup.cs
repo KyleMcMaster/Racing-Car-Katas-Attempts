@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using TDDMicroExercises.Features.TirePressureMonitoringSystem;
+using TDDMicroExercises.Features.UnicodeTextToHtmlTextConverter;
 
 namespace TDDMicroExercises
 {
@@ -30,6 +31,7 @@ namespace TDDMicroExercises
 
             services.AddScoped<ISensor, Sensor>();
             services.AddScoped<IRandomNumberGenerator, RandomNumberGenerator>();
+            services.AddScoped<IUnicodeTextToHtmlTextConverter, UnicodeTextToHtmlTextConverter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

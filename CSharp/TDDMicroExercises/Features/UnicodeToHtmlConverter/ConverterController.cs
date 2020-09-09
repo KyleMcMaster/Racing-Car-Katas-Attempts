@@ -9,8 +9,13 @@ namespace TDDMicroExercises.Features.UnicodeTextToHtmlTextConverter
     public class ConverterController : ControllerBase
     {
         private readonly ILogger<ConverterController> logger;
+        private readonly IUnicodeTextToHtmlTextConverter unicodeTextToHtmlTextConverter;
 
-        public ConverterController(ILogger<ConverterController> logger) => this.logger = logger;
+        public ConverterController(ILogger<ConverterController> logger, IUnicodeTextToHtmlTextConverter unicodeTextToHtmlTextConverter)
+        { 
+            this.logger = logger;
+            this.unicodeTextToHtmlTextConverter = unicodeTextToHtmlTextConverter;
+        }
 
         [HttpPost()]
         [SwaggerOperation(
@@ -21,11 +26,11 @@ namespace TDDMicroExercises.Features.UnicodeTextToHtmlTextConverter
         ]
         public HtmlTextResponse Post([FromBody] UnicodeTextToHtmlTextRequest request)
         {
-            var converter = new UnicodeTextToHtmlTextConverter(request.UnicodeText);
+            string htmlText = unicodeTextToHtmlTextConverter.ConvertToHtml(request.UnicodeText);
 
             return new HtmlTextResponse
             {
-                HtmlText = converter.ConvertToHtml()
+                HtmlText = htmlText
             };
         }
     }
