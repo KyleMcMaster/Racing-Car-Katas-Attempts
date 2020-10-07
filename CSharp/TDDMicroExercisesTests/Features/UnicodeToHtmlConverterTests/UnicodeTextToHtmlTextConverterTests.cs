@@ -7,19 +7,19 @@ namespace TDDMicroExercisesTests.Features.UnicodeToHtmlConverterTests
     public class UnicodeTextToHtmlTextConverterTests
     {
         [Fact]
-        public void Constructor_Initialized_Unicode_Text_To_Empty_String()
+        public void Constructor_Initializes_Non_Null_Object()
         {
-            var sut = new UnicodeTextToHtmlTextConverter(string.Empty);
+            var sut = new UnicodeTextToHtmlTextConverter();
 
-            sut.GetUnicodeText().Should().Be(string.Empty);
+            sut.Should().NotBeNull();
         }
 
         [Fact]
         public void Converter_Takes_In_Empty_String_And_Returns_Line_Break()
         {
-            var sut = new UnicodeTextToHtmlTextConverter(string.Empty);
+            var sut = new UnicodeTextToHtmlTextConverter();
 
-            string result = sut.ConvertToHtml();
+            string result = sut.ConvertToHtml(string.Empty);
 
             result.Should().Be("<br />");
         }
@@ -37,9 +37,9 @@ namespace TDDMicroExercisesTests.Features.UnicodeToHtmlConverterTests
         [Fact]
         public void Converter_Takes_In_Ampersand_And_Returns_Html()
         {
-            var sut = new UnicodeTextToHtmlTextConverter("&");
+            var sut = new UnicodeTextToHtmlTextConverter();
 
-            string result = sut.ConvertToHtml();
+            string result = sut.ConvertToHtml("&");
 
             result.Should().Be("&amp;<br />");
         }
@@ -47,9 +47,9 @@ namespace TDDMicroExercisesTests.Features.UnicodeToHtmlConverterTests
         [Fact]
         public void Converter_Takes_Closing_Bracket_And_Returns_Html()
         {
-            var sut = new UnicodeTextToHtmlTextConverter(">");
+            var sut = new UnicodeTextToHtmlTextConverter();
 
-            string result = sut.ConvertToHtml();
+            string result = sut.ConvertToHtml(">");
 
             result.Should().Be("&gt;<br />");
         }
@@ -57,9 +57,9 @@ namespace TDDMicroExercisesTests.Features.UnicodeToHtmlConverterTests
         [Fact]
         public void Converter_Takes_Open_Bracket_And_Returns_Html()
         {
-            var sut = new UnicodeTextToHtmlTextConverter("<");
+            var sut = new UnicodeTextToHtmlTextConverter();
 
-            string result = sut.ConvertToHtml();
+            string result = sut.ConvertToHtml("<");
 
             result.Should().Be("&lt;<br />");
         }
@@ -67,9 +67,9 @@ namespace TDDMicroExercisesTests.Features.UnicodeToHtmlConverterTests
         [Fact]
         public void Converter_Takes_Slashand_DoubleQuote_And_Returns_Html()
         {
-            var sut = new UnicodeTextToHtmlTextConverter("\"");
+            var sut = new UnicodeTextToHtmlTextConverter();
 
-            string result = sut.ConvertToHtml();
+            string result = sut.ConvertToHtml("\"");
 
             result.Should().Be("&quot;<br />");
         }
@@ -77,9 +77,9 @@ namespace TDDMicroExercisesTests.Features.UnicodeToHtmlConverterTests
         [Fact]
         public void Converter_Takes_Slash_And_Apostrophe_And_Returns_Html()
         {
-            var sut = new UnicodeTextToHtmlTextConverter("\'");
+            var sut = new UnicodeTextToHtmlTextConverter();
 
-            string result = sut.ConvertToHtml();
+            string result = sut.ConvertToHtml("\'");
 
             result.Should().Be("&apos;<br />");
         }
@@ -87,9 +87,9 @@ namespace TDDMicroExercisesTests.Features.UnicodeToHtmlConverterTests
         [Fact]
         public void Converter_Takes_All_Input_And_Returns_Html()
         {
-            var sut = new UnicodeTextToHtmlTextConverter("&<>\"\'");
+            var sut = new UnicodeTextToHtmlTextConverter();
 
-            string result = sut.ConvertToHtml();
+            string result = sut.ConvertToHtml("&<>\"\'");
 
             result.Should().Be("&amp;&lt;&gt;&quot;&apos;<br />");
         }
@@ -97,9 +97,9 @@ namespace TDDMicroExercisesTests.Features.UnicodeToHtmlConverterTests
         [Fact]
         public void Converter_Takes_Arbitrary_Input_And_Returns_Html()
         {
-            var sut = new UnicodeTextToHtmlTextConverter("ntg & jdawg");
+            var sut = new UnicodeTextToHtmlTextConverter();
 
-            string result = sut.ConvertToHtml();
+            string result = sut.ConvertToHtml("ntg & jdawg");
 
             result.Should().Be("ntg &amp; jdawg<br />");
         }
